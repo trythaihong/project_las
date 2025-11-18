@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAMBO NET - សំណាញ់កសិកម្ម</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>ចូលប្រើប្រាស់ប្រព័ន្ធ</h2>
+        <p class="test-credentials">
+          គណនីសាកល្បង:<br />
+          <strong>អ៊ីមែល:</strong> demo@test.com<br />
+          <strong>ពាក្យសម្ងាត់:</strong> password123
+        </p>
+        <form id="loginForm">
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="អ៊ីមែលរបស់អ្នក"
+            required
+          />
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="ពាក្យសម្ងាត់"
+            required
+          />
+          <button type="submit" class="btn btn-primary btn-block">
+            ចូលប្រើប្រាស់
+          </button>
+        </form>
+        <p class="modal-footer-text">
+          មិនទាន់មានគណនី? <a href="#" id="showRegister">ចុះឈ្មោះ</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+      <div class="modal-content modal-large">
+        <span class="close-modal">&times;</span>
+        <h2>ទម្រង់បញ្ជាទិញផលិតផល</h2>
+        <div id="orderDetails"></div>
+        <form id="orderForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>ឈ្មោះពេញ *</label>
+              <input
+                type="text"
+                id="orderName"
+                placeholder="បញ្ចូលឈ្មោះរបស់អ្នក"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>លេខទូរស័ព្ទ *</label>
+              <input
+                type="tel"
+                id="orderPhone"
+                placeholder="+855 12 345 678"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>អាសយដ្ឋានចែកចាយ *</label>
+            <textarea
+              id="orderAddress"
+              rows="3"
+              placeholder="ផ្ទះលេខ ផ្លូវ សង្កាត់/ឃុំ ខណ្ឌ/ស្រុក ខេត្ត"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>ចំនួន *</label>
+              <input
+                type="number"
+                id="orderQuantity"
+                value="1"
+                min="1"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>តម្លៃ</label>
+              <input type="text" id="displayPrice" readonly />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>ចំណាំបន្ថែម</label>
+            <textarea
+              id="orderNotes"
+              rows="2"
+              placeholder="សូមបញ្ជាក់ពីតម្រូវការពិសេសរបស់អ្នក"
+            ></textarea>
+          </div>
+
+          <h3>វិធីសាស្ត្របង់ប្រាក់</h3>
+          <div class="payment-methods">
+            <label class="payment-option">
+              <input type="radio" name="payment" value="cod" checked />
+              <div class="payment-info">
+                <span class="payment-icon">💵</span>
+                <div>
+                  <strong>សាច់ប្រាក់ពេលទទួល (COD)</strong>
+                  <p>បង់ប្រាក់ពេលទទួលទំនិញ</p>
+                </div>
+              </div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="aba" />
+              <div class="payment-info">
+                <span class="payment-icon">🏦</span>
+                <div>
+                  <strong>ABA Mobile Banking</strong>
+                  <p>ផ្ទេរតាម ABA</p>
+                </div>
+              </div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="wing" />
+              <div class="payment-info">
+                <span class="payment-icon">💳</span>
+                <div>
+                  <strong>Wing Money</strong>
+                  <p>ផ្ទេរតាម Wing</p>
+                </div>
+              </div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="acleda" />
+              <div class="payment-info">
+                <span class="payment-icon">🏧</span>
+                <div>
+                  <strong>ACLEDA Mobile</strong>
+                  <p>ផ្ទេរតាម ACLEDA</p>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div id="bankingDetails" style="display: none">
+            <div class="bank-info">
+              <h4>ព័ត៌មានគណនីសម្រាប់ផ្ទេរប្រាក់</h4>
+              <p><strong>ឈ្មោះគណនី:</strong> CAMBO NET CO., LTD</p>
+              <p><strong>លេខគណនី:</strong> 001 234 567 890</p>
+              <p><strong>លេខទូរស័ព្ទ:</strong> +855 12 345 678</p>
+              <div class="qr-placeholder">
+                <p>📱 QR Code សម្រាប់ស្កែន</p>
+                <div class="qr-code">QR</div>
+              </div>
+              <p class="note">
+                * បន្ទាប់ពីផ្ទេរប្រាក់ សូមថតរូបបង្កាន់ដៃហើយផ្ញើមកយើង
+              </p>
+            </div>
+          </div>
+
+          <div class="order-summary">
+            <h4>សង្ខេបការបញ្ជាទិញ</h4>
+            <div class="summary-row">
+              <span>តម្លៃផលិតផល:</span>
+              <span id="summaryPrice">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>ចំនួន:</span>
+              <span id="summaryQty">1</span>
+            </div>
+            <div class="summary-row">
+              <span>ថ្លៃដឹកជញ្ជូន:</span>
+              <span id="summaryShipping">$5.00</span>
+            </div>
+            <div class="summary-row total">
+              <span>សរុបទាំងអស់:</span>
+              <span id="summaryTotal">$0.00</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-large">
+            បញ្ជាក់ការបញ្ជាទិញ
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <nav class="container">
+        <div class="logo">
+          <img src="./img//logo.png" width="100px" alt="" />
+          <span>CAMBO NET</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#products">ផលិតផល</a></li>
+          <li><a href="#features">លក្ខណៈពិសេស</a></li>
+          <li><a href="#portfolio">ព័ត៌មាន</a></li>
+          <li><a href="#faq">សំណួរ</a></li>
+          <li><a href="#contact">ទំនាក់ទំនង</a></li>
+          <li id="authButton">
+            <a href="#" class="btn btn-header" id="loginBtn">ចូលប្រើប្រាស់</a>
+          </li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <span class="badge">ល្អបំផុត</span>
+            <h1>សំណាញ់សម្រាប់កសិកម្ម</h1>
+            <h3>ប្រម៉ូលសិន តម្លៃពិសេស</h3>
+            <h5>ទិញ៥ ថែមជូន១</h5>
+            <h5>ទិញ១០​ ថែមជូន២</h5>
+            <p>
+              សំណាញ់ការពារពន្លឺថ្ងៃសម្រាប់កសិកម្មទំនើប និងកសិដ្ឋានទំនើប
+              មានគុណភាពខ្ពស់ និងរយៈពេលវែង
+            </p>
+            <div class="hero-features">
+              <div class="feature-item">
+                <span>✓</span>
+                <span>គុណភាពខ្ពស់</span>
+              </div>
+              <div class="feature-item">
+                <span>✓</span>
+                <span>តម្លៃសមរម្យ</span>
+              </div>
+              <div class="feature-item">
+                <span>✓</span>
+                <span>ដឹកជញ្ជូនរហ័ស</span>
+              </div>
+            </div>
+            
+            <div class="">
+             
+              <a href="https://t.me/camboagri" class="btn btn-primary cta-order">ទិញឥឡូវនេះ</a>
+              <a href="#products" class="btn btn-secondary">មើលផលិតផល</a>
+            </div>
+            <div class="Expired">
+            <p>ចាប់ផ្ដើមពីថ្ងៃទី១ ខែតុលា ឆ្នាំ២០២៥</p>
+             <p>បញ្ចប់ថ្ងៃទី៣១ ខែតុលា ឆ្នាំ២០២៥</p>
+          </div>
+          </div>
+          <div class="hero-media">
+            <div class="video-container">
+              <iframe
+                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F770859815933567&show_text=false&width=261&t=0"
+                style="border: none; overflow: hidden"
+                scrolling="no"
+                frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              >
+              </iframe>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section class="feature-section">
+      <h2 class="feature-title">លក្ខណៈពិសេស</h2>
+      <p class="feature-subtitle">
+        ឡើងកម្ពស់ទំនុកចិត្តអ្នកប្រើប្រាស់ជាងមុន
+        ដោយមូលដ្ឋានលើអត្ថប្រយោជន៍ជាក់ស្តែង។ ទូលំទូលាយបង្ហាញលក្ខណៈពិសេស
+        និងអត្ថប្រយោជន៍ដែលអាចជួយអោយផលិតផលរបស់អ្នក
+        ធ្វើអោយអតិថិជនយល់ឃើញតម្លៃពិតប្រាកដ។
+      </p>
+      <div class="feature-container">
+        <!-- Card 1 -->
+        <div class="card">
+          <h3 class="card-title">គុណភាព</h3>
+          <p class="card-desc">ផលិតផលមានគុណភាពខ្ពស់​ និងមិនងាយសាក់ពណ៍<br /></p>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+          <h3 class="card-title">តម្លៃ</h3>
+          <p class="card-desc">ជាផលិតផលក្នុងស្រុកមានតម្លៃក្រោមទីផ្សារ<br /></p>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+          <h3 class="card-title">ធាតុផ្សំ</h3>
+          <p class="card-desc">
+            ស្បៃលផិតចេញពីធាតុផ្សំក្នុងស្រុកដែលមានគុណភាពខ្ពស់<br />
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="features">
+      <div class="container">
+        <h2 class="section-title">អត្ថប្រយោជន៍</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">⭐</div>
+            <h3>គុណភាព</h3>
+            <p>ទទួលបានស្បៃដែលមានភាពស្វិត និង​ប្រើប្រាស់បានយូរ</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🕒</div>
+            <h3>សេវាកម្ម</h3>
+            <p>សេវាកម្មបម្រើ 24/7</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🚚</div>
+            <h3>សេវាកម្មដឹកជញ្ជូន</h3>
+            <p>ការដឹកជញ្ជូនមានភាពលឿន និងមានសុវត្ថិភាព</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📝</div>
+            <h3>ការធានា</h3>
+            <p>ទទួលបានការធានាលើផលិតផលរយៈពេល 1 ឆ្នាំ</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+      <div class="container">
+        <h2 class="section-title">ផលិតផលរបស់យើង</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <img
+              src="img/Screenshot 2025-11-15 142647.png"
+              alt="សំណាញ់"
+              class="product-image"
+            />
+            <div class="product-info">
+              <span class="product-badge">ថ្មី</span>
+              <h3 class="product-title">ម្ជុល​ 3 (ស្តើង)</h3>
+              <p>ការពារកម្ដៅបាន60%</p>
+              <p class="product-price" data-price="50">$50.00 / រមឹល</p>
+              <a
+                href="#"
+                class="btn btn-primary btn-block cta-order"
+                data-product="សំណាញ់ ១ ស្រទាប់ (៣ម៉ែត្រ)"
+                data-price="50"
+                >បញ្ជាទិញឥឡូវនេះ</a
+              >
+            </div>
+          </div>
+          <div class="product-card">
+            <img
+              src="img/Screenshot 2025-11-15 142717.png"
+              alt="សំណាញ់"
+              class="product-image"
+            />
+            <div class="product-info">
+              <span class="product-badge">ពេញនិយម</span>
+              <h3 class="product-title">ម្ជុល​ 6 (កណ្ដាល)</h3>
+              <p>ការពារកម្ដៅបាន​ 80%</p>
+              <p class="product-price" data-price="65">$65.00 / រមឹល</p>
+              <a
+                href="#"
+                class="btn btn-primary btn-block cta-order"
+                data-product="សំណាញ់ ១ ស្រទាប់ (៤ម៉ែត្រ)"
+                data-price="65"
+                >បញ្ជាទិញឥឡូវនេះ</a
+              >
+            </div>
+          </div>
+          <div class="product-card">
+            <img
+              src="img/Screenshot 2025-11-15 142806.png"
+              alt="សំណាញ់"
+              class="product-image"
+            />
+            <div class="product-info">
+              <span class="product-badge">ល្អបំផុត</span>
+              <h3 class="product-title">ម្ជុល​ 8 (ក្រាស់)</h3>
+              <p>ការពារកម្ដៅបាន​ 90%</p>
+              <p class="product-price" data-price="85">$85.00 / រមឹល</p>
+              <a
+                href="#"
+                class="btn btn-primary btn-block cta-order"
+                data-product="សំណាញ់ ២ ស្រទាប់ (៦ម៉ែត្រ)"
+                data-price="85"
+                >បញ្ជាទិញឥឡូវនេះ</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+      <div class="container">
+        <h2 class="section-title">ការវាយតម្លៃពីអតិថិជន</h2>
+        <div class="rating-summary">
+          <div class="rating-number">4.6/5</div>
+          <div class="stars">★★★★★</div>
+          <p>ពី ១,២៣៥ ការវាយតម្លៃ</p>
+        </div>
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>
+              សំណាញ់មានគុណភាពល្អណាស់ ប្រើបានយូរ និងតម្លៃសមរម្យ។
+              សេវាកម្មផ្តល់ជូនលឿនខ្លាំង។
+            </p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">ស</div>
+              <div>
+                <div class="reviewer-name">សុខ សុភា</div>
+                <div class="reviewer-date">២ សប្តាហ៍មុន</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>
+              ខ្ញុំបានប្រើសំណាញ់នេះសម្រាប់ចម្ការបន្លែ របស់ខ្ញុំ ពិតជាល្អណាស់។
+            </p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">ច</div>
+              <div>
+                <div class="reviewer-name">ចន្ទ សុផល</div>
+                <div class="reviewer-date">១ ខែមុន</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>គុណភាពល្អ តម្លៃសមរម្យ និងសេវាកម្មល្អឥតខ្ចោះ។ សូមណែនាំ!</p>
+            <div class="reviewer">
+              <div class="reviewer-avatar">វ</div>
+              <div>
+                <div class="reviewer-name">វិចិត្រា ធីតា</div>
+                <div class="reviewer-date">៣ សប្តាហ៍មុន</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="portfolio">
+      <div class="container">
+        <h2 class="section-title">ព័ត៌មានថ្មីៗ</h2>
+        <div class="blog-grid">
+          <div class="blog-card">
+            <img
+              src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=400"
+              alt="ចម្ការបន្លែ"
+              class="blog-image"
+            />
+            <div class="blog-content">
+              <h3>របៀបប្រើប្រាស់សំណាញ់សម្រាប់ចម្ការបន្លែ</h3>
+              <p>
+                ស្វែងយល់អំពីវិធីប្រើប្រាស់សំណាញ់ដើម្បីការពារចម្ការបន្លែរបស់អ្នក
+              </p>
+              <a href="#" class="btn btn-primary">អានបន្ត</a>
+            </div>
+          </div>
+          <div class="blog-card">
+            <img
+              src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=400"
+              alt="កសិដ្ឋាន"
+              class="blog-image"
+            />
+            <div class="blog-content">
+              <h3>អត្ថប្រយោជន៍នៃសំណាញ់</h3>
+              <p>រៀនអំពីផលប្រយោជន៍ជាច្រើននៃការប្រើសំណាញ់កសិកម្ម</p>
+              <a href="#" class="btn btn-primary">អានបន្ត</a>
+            </div>
+          </div>
+          <div class="blog-card">
+            <img
+              src="https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=400"
+              alt="ដំណាំ"
+              class="blog-image"
+            />
+            <div class="blog-content">
+              <h3>ការថែរក្សាសំណាញ់ឱ្យប្រើបានយូរ</h3>
+              <p>គន្លឹះសម្រាប់ការថែទាំសំណាញ់ឱ្យមានអាយុកាលវែង</p>
+              <a href="#" class="btn btn-primary">អានបន្ត</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <h2 class="section-title">សំណួរដែលសួរញឹកញាប់</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>សំណាញ់មានអាយុកាលប៉ុន្មានឆ្នាំ?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                សំណាញ់របស់យើងមានអាយុកាលពី ៣ ដល់ ៥ ឆ្នាំ អាស្រ័យលើការប្រើប្រាស់
+                និងការថែទាំ។
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>តើអ្នកផ្តល់សេវាដឹកជញ្ជូនទេ?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>បាទ/ចាស យើងផ្តល់សេវាដឹកជញ្ជូនទូទាំងប្រទេសកម្ពុជា។</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>តើមានការធានាទេ?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>យើងផ្តល់ការធានា ១ ឆ្នាំសម្រាប់គុណភាពផលិតផល។</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>របៀបបញ្ជាទិញដូចម្តេច?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                អ្នកអាចទាក់ទងមកយើងតាមរយៈទូរស័ព្ទ ឬបំពេញទម្រង់បញ្ជាទិញខាងក្រោម។
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">ទាក់ទងមកយើង</h2>
+        <div class="contact-content">
+          <div class="contact-info" >
+            <h3>ព័ត៌មានទំនាក់ទំនង</h3>
+            <div class="contact_cart">
+            <div class="contact-item">
+              <span class="icon">📞</span>
+              <div>
+                <strong>លេខទូរស័ព្ទ:</strong>
+                <p>089 35 59 35</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">✉️</span>
+              <div>
+                <strong>តេឡេក្រាម</strong>
+                <a href="https://t.me/camboagri">telegram channel</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">📍</span>
+              <div>
+                <strong>អាសយដ្ឋាន:</strong>
+                <p>ភ្នំពេញ,សៀមរាប, កម្ពុជា</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon">📍</span>
+              <div>
+                <strong>Facebook</strong>
+                 <a href="https://web.facebook.com/profile.php?id=61579844589177">facebook page</a>
+              </div>
+            </div>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="logo">
+              <img src="./img/logo2.png" width="100px" alt="" />
+              <span>CAMBO NET</span>
+            </div>
+            <p>ផលិតផលសំណាញ់សម្រាប់កសិកម្មគុណភាពខ្ពស់</p>
+          </div>
+          <div class="footer-section">
+            <h4>តំណភ្ជាប់លឿន</h4>
+            <ul>
+              <li><a href="#home">ទំព័រដើម</a></li>
+              <li><a href="#products">ផលិតផល</a></li>
+              <li><a href="#features">លក្ខណៈពិសេស</a></li>
+              <li><a href="#contact">ទំនាក់ទំនង</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>ទំនាក់ទំនង</h4>
+            <p>📞 +855 12 345 678</p>
+            <p>✉️ info@cambonet.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 CAMBO NET. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
