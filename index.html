@@ -212,62 +212,68 @@
       </nav>
     </header>
 
-    <!-- Hero Section -->
+      <!-- Hero Section -->
     <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <span class="badge">ល្អបំផុត</span>
-            <h1>សំណាញ់សម្រាប់កសិកម្ម</h1>
-            <h3>ប្រម៉ូលសិន តម្លៃពិសេស</h3>
-            <h5>ទិញ៥ ថែមជូន១</h5>
-            <h5>ទិញ១០​ ថែមជូន២</h5>
-            <p>
-              សំណាញ់ការពារពន្លឺថ្ងៃសម្រាប់កសិកម្មទំនើប និងកសិដ្ឋានទំនើប
-              មានគុណភាពខ្ពស់ និងរយៈពេលវែង
-            </p>
-            <div class="hero-features">
-              <div class="feature-item">
-                <span>✓</span>
-                <span>គុណភាពខ្ពស់</span>
-              </div>
-              <div class="feature-item">
-                <span>✓</span>
-                <span>តម្លៃសមរម្យ</span>
-              </div>
-              <div class="feature-item">
-                <span>✓</span>
-                <span>ដឹកជញ្ជូនរហ័ស</span>
-              </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="badge">ល្អបំផុត</span>
+                    <h1>សំណាញ់សម្រាប់កសិកម្ម</h1>
+                    <p>
+                        សំណាញ់ការពារពន្លឺថ្ងៃសម្រាប់កសិកម្មទំនើប និងកសិដ្ឋានទំនើប
+                        មានគុណភាពខ្ពស់ និងរយៈពេលវែង
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="https://t.me/camboagri" class="btn btn-primary cta-order">ទិញឥឡូវនេះ</a>
+                        <a href="#products" class="btn btn-secondary">មើលផលិតផល</a>
+                    </div>
+                </div>
+                <div class="video-frame">
+                  <video class="main-video" src="./video/video.mp4" autoplay loop></video>
+                  <video class="bg" src="./video/video.mp4" autoplay loop></video>
+                  <video class="main-video" src="./video/video.mp4" autoplay loop></video>
             </div>
-            
-            <div class="">
-             
-              <a href="https://t.me/camboagri" class="btn btn-primary cta-order">ទិញឥឡូវនេះ</a>
-              <a href="#products" class="btn btn-secondary">មើលផលិតផល</a>
             </div>
-            <div class="Expired">
-            <p>ចាប់ផ្ដើមពីថ្ងៃទី១ ខែតុលា ឆ្នាំ២០២៥</p>
-             <p>បញ្ចប់ថ្ងៃទី៣១ ខែតុលា ឆ្នាំ២០២៥</p>
-          </div>
-          </div>
-          <div class="hero-media">
-            <div class="video-container">
-              <iframe
-                src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F770859815933567&show_text=false&width=261&t=0"
-                style="border: none; overflow: hidden"
-                scrolling="no"
-                frameborder="0"
-                allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        </div>
+    </section>
+
+     <!-- Popup -->
+    <div id="popup" class="popup" aria-hidden="true">
+      <div
+        class="popup-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="popTitle"
+      >
+        <div class="close" id="closePopup" title="Close">✕</div>
+
+        <!-- ប្តូររូប / content តាមចង់ -->
+       
+
+        <div style="display: flex; gap: 12px; align-items: flex-start">
+          <img
+            src="./img/image_2025-11-18_09-33-58.png"
+            alt="product"
+            style="width: 600px; height: auto; object-fit: cover"
+          />
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-secondary" id="noThanks">ពេលក្រោយ</button>
+          <a
+                href="#"
+                class="btn btn-primary btn-block cta-order"
+                data-product="សំណាញ់ ១ ស្រទាប់ (៣ម៉ែត្រ)"
+                data-price="50"
+                >បញ្ជាទិញឥឡូវនេះ</a
               >
-              </iframe>
-            </div>
-          </div>
           
         </div>
       </div>
-    </section>
+    </div>
+    <!-- Login Modal -->
+    
+
 
     <!-- Feature Section -->
     <section class="feature-section">

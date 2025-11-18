@@ -547,3 +547,40 @@ document.getElementById('showRegister').addEventListener('click', (e) => {
     e.preventDefault();
     showNotification('មុខងារចុះឈ្មោះនឹងមកដល់ឆាប់ៗនេះ!', 'info');
 });
+
+document.getElementById("showRegister").addEventListener("click", (e) => {
+  e.preventDefault();
+  showNotification("មុខងារចុះឈ្មោះនឹងមកដល់ឆាប់ៗនេះ!", "info");
+});
+const popup = document.getElementById("popup");
+const closeBtn = document.getElementById("closePopup");
+const noThanks = document.getElementById("noThanks");
+
+// បង្ហាញ popup ភ្លាមពេលទំព័រ load
+document.addEventListener("DOMContentLoaded", () => {
+  // ១) បង្ហាញភ្លាម: uncomment ខាងក្រោម
+  popup.classList.add("show");
+  popup.setAttribute("aria-hidden", "false");
+
+  // ២) (optional) ប្រសិនចង់ឲ្យមានពេលយឺត 1s -> setTimeout(()=>{ ... },1000);
+  // setTimeout(() => { popup.classList.add('show'); popup.setAttribute('aria-hidden','false') }, 1000);
+});
+
+// Close handlers
+function closePopup() {
+  popup.classList.remove("show");
+  popup.setAttribute("aria-hidden", "true");
+}
+
+closeBtn.addEventListener("click", closePopup);
+noThanks.addEventListener("click", closePopup);
+
+// Close when clicking outside content
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) closePopup();
+});
+
+// ESC key closes popup
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && popup.classList.contains("show")) closePopup();
+});
