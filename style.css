@@ -438,8 +438,8 @@ header {
   z-index: 1000;
   transition: all 0.3s;
 }
-.container_1{
-    padding: 0px 30px 0px 30px;
+.container_1 {
+  padding: 0px 30px 0px 30px;
 }
 
 nav {
@@ -537,7 +537,7 @@ nav {
   margin-bottom: 1.2rem;
   backdrop-filter: blur(10px);
 }
-.hero-text{
+.hero-text {
   margin-left: -140px;
 }
 
@@ -546,11 +546,11 @@ nav {
   .hero-content {
     gap: 40px;
   }
-  
+
   .hero-text h1 {
     font-size: 2.8rem;
   }
-  
+
   /* Reset margin for tablet */
   .hero-text {
     margin-left: 0;
@@ -562,31 +562,31 @@ nav {
     padding: 60px 20px;
     min-height: auto;
   }
-  
+
   .hero-content {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
   }
-  
+
   .hero-text h1 {
     font-size: 2.4rem;
   }
-  
+
   .hero-text p {
     font-size: 1.05rem;
   }
-  
+
   .cta-buttons {
     justify-content: center;
   }
-  
+
   .hero-media {
     order: -1;
     max-width: 500px;
     margin: 0 auto;
   }
-  
+
   /* Ensure margin is reset for mobile */
   .hero-text {
     margin-left: 0;
@@ -597,35 +597,31 @@ nav {
   .hero {
     padding: 40px 15px;
   }
-  
+
   .hero-text h1 {
     font-size: 2rem;
   }
-  
+
   .hero-text p {
     font-size: 1rem;
     margin-bottom: 2rem;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .btn {
     width: 100%;
     max-width: 280px;
     padding: 12px 24px;
   }
-  
+
   .hero-media {
     padding: 15px;
   }
-  
-  .video-frame {
-    border-radius: 15px;
-  }
-  
+
   /* Final reset for small mobile */
   .hero-text {
     margin-left: 0;
@@ -704,16 +700,18 @@ nav {
 .hero-media:hover {
   transform: translateY(-10px);
 }
-
+.video-frame {
+  border-radius: 15px;
+}
 .video-frame {
   width: 100%;
   max-width: 700px;
-  aspect-ratio: 16 / 9;
-  border-radius: 20px;
-  overflow: hidden;
+  aspect-ratio: 16 / 9; /* responsive container */
   position: relative;
+  overflow: hidden;
+  border-radius: 20px;
 }
-
+/* Blurred background */
 .video-frame video.bg {
   position: absolute;
   top: 0;
@@ -721,15 +719,22 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(20px);
+  filter: blur(25px);
   transform: scale(1.2);
+  z-index: 1;
 }
 
+/* Main centered video */
 .video-frame video.main-video {
-  position: relative;
-  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 100%;
+  width: auto;
+  max-width: 100%;
   object-fit: contain;
+  z-index: 2;
 }
 
 /* ===== FEATURE SECTION ===== */
