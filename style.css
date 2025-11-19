@@ -508,8 +508,8 @@ nav {
 .hero {
     background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
     color: white;
-    padding: 120px 20px 80px;
-    min-height: 100vh;
+    padding: 80px 20px 80px;
+    min-height: 70vh;
     display: flex;
     align-items: center;
 }
