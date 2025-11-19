@@ -537,6 +537,100 @@ nav {
   margin-bottom: 1.2rem;
   backdrop-filter: blur(10px);
 }
+.hero-text{
+  margin-left: -140px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .hero-content {
+    gap: 40px;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.8rem;
+  }
+  
+  /* Reset margin for tablet */
+  .hero-text {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 20px;
+    min-height: auto;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.4rem;
+  }
+  
+  .hero-text p {
+    font-size: 1.05rem;
+  }
+  
+  .cta-buttons {
+    justify-content: center;
+  }
+  
+  .hero-media {
+    order: -1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Ensure margin is reset for mobile */
+  .hero-text {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 15px;
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 24px;
+  }
+  
+  .hero-media {
+    padding: 15px;
+  }
+  
+  .video-frame {
+    border-radius: 15px;
+  }
+  
+  /* Final reset for small mobile */
+  .hero-text {
+    margin-left: 0;
+  }
+}
 
 .hero-text h1 {
   font-size: 3.2rem;
