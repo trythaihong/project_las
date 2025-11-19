@@ -94,7 +94,7 @@ body {
 }
 
 .btn-primary {
-  background: #2e8b57;
+  background: #00ff6e;
   color: #fff;
 }
 
@@ -538,7 +538,7 @@ nav {
   backdrop-filter: blur(10px);
 }
 .hero-text {
-  margin-left: -140px;
+  margin-left: -50px;
 }
 
 /* Responsive Styles */
@@ -668,12 +668,13 @@ nav {
 }
 
 .btn-primary {
-  background: rgb(0, 0, 0);
-  color: #22c55e;
+  background: rgb(52, 202, 29);
+  color: #ededed;
 }
 
 .btn-primary:hover {
-  background: #f0f0f0;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 255, 34);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -1046,7 +1047,7 @@ nav {
   padding: 28px;
 }
 .blog-content .btn-primary {
-  margin-left: 190px;
+  margin-left: 170px;
   background-color: white;
 }
 
