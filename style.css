@@ -188,6 +188,10 @@ body {
   font-weight: bold;
   border: 2px solid white;
 }
+.container {
+  margin: 10px auto;
+  padding: 0 90px;
+}
 
 /* ===== MODAL STYLES ===== */
 .modal {
@@ -971,16 +975,28 @@ header {
 }
 
 .feature-container {
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+
 }
 
 .card {
   background: white;
   padding: 40px 30px;
+
+  width: 410px;
+  height: 200px;
+  padding: 40px 25px;
+
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s;
