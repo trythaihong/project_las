@@ -103,8 +103,8 @@ body {
   color: #333;
 }
 .container {
-  margin: 0 auto;
-  padding: 0 20px;
+  margin: 10px auto;
+  padding: 0 90px;
 }
 
 /* ===== MODAL STYLES ===== */
@@ -760,13 +760,13 @@ nav {
 .feature-container {
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
 .card {
   background: white;
-  width: 460px;
+  width: 410px;
   height: 200px;
   padding: 40px 25px;
   border-radius: 20px;
