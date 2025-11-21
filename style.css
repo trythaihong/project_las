@@ -993,12 +993,10 @@ nav {
 /* ===== BLOG SECTION ===== */
 .blog {
   padding: 20px 0;
-  margin-top: 30px;
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: white;
   position: relative;
   overflow: hidden;
-  margin-bottom: 30px;
 }
 
 .blog::before {
