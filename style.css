@@ -661,7 +661,7 @@ nav {
 /* ===== FEATURE SECTION ===== */
 .feature-section {
   text-align: center;
-  padding: 60px 20px;
+  padding: 20px 20px;
 }
 
 .feature-title {
@@ -718,7 +718,7 @@ nav {
 
 /* ===== BENEFITS SECTION ===== */
 .benefits {
-  padding: 80px 0;
+  padding: 20px 0;
 }
 
 .section-title {
@@ -773,7 +773,7 @@ nav {
 
 /* ===== PRODUCTS SECTION ===== */
 .products {
-  padding: 80px 0;
+  padding: 20px 0;
   background: #f9fafb;
 }
 
@@ -839,7 +839,7 @@ nav {
 
 /* ===== REVIEWS SECTION ===== */
 .reviews {
-  padding: 80px 0;
+  padding: 20px 0;
 }
 
 .rating-summary {
@@ -926,7 +926,7 @@ nav {
 
 /* ===== BLOG SECTION ===== */
 .blog {
-  padding: 80px 0;
+  padding: 20px 0;
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: white;
   position: relative;
@@ -996,7 +996,7 @@ nav {
 
 /* ===== FAQ SECTION ===== */
 .faq {
-  padding: 80px 0;
+  padding: 20px 0;
   background: #f9fafb;
 }
 
@@ -1071,7 +1071,7 @@ nav {
 
 /* ===== CONTACT SECTION ===== */
 .contact {
-  padding: 80px 0;
+  padding: 20px 0;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
